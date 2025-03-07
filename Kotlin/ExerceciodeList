@@ -1,0 +1,23 @@
+fun conter():Int {
+    println("Digite quantos numeros quer digitar dentro da lista: ")
+    return(readLine()!!.toInt())
+}
+
+fun inserirLista(list:MutableList<Int>, contador:Int){
+    for(number in 1..contador){
+        println("Digite um numoer para inserir na lista: ")
+        list.add(readLine()!!.toInt())
+    }
+}
+fun NumeroPares(list:MutableList<Int>){
+    list.removeIf{it%2==0}
+    }
+
+fun main(){
+    var contador= conter()
+    val lista= mutableListOf<Int>()
+    inserirLista(lista,contador)
+    NumeroPares(lista)
+    println(lista.sorted())
+
+}
