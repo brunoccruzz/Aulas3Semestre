@@ -1,1 +1,46 @@
+fun adicionar(map:MutableMap<String,Int>){
+    println("Qual nome do produto: ")
+    val x=readln()
+    println("Qual preco do produto ${x}")
+    val y=readln().toInt()
+    map[x]=y
+    println("Produto adicionado!\n")
+}
+fun exibir(map:MutableMap<String,Int>){
+        println("Produtos ${map.keys}")
+        println("Preços: ${map.values}")
+    
+}
+fun pergunta(map:MutableMap<String,Int>){
+    println("Qual produto deseja saber o preço: ")
+    val c=readln()
+    if(c in map){
+        println("Valor do produto ${map[c]}")
+    }
+}
+fun media(map:MutableMap<String,Int>){
+    val media=map.values.average()
+    println(media)
+}
+fun menu():Int{
+    println("1 - Adicionar produto")
+    println("2 - Mostrar todos produtos")
+    println("3 - Procurar produto")
+    println("4 - Media produtos")
+    return(readln().toInt())
+}
+fun main(){
+    var resposta=menu()
+    var mapa= mutableMapOf<String,Int>()
+    while (resposta in 1..4) {
+        when (resposta) {
+            1 -> adicionar(mapa)
+            2 -> exibir(mapa)
+            3 -> pergunta(mapa)
+            4 -> media(mapa)
+        }
+        resposta = menu()
+    }
+}
+
 
