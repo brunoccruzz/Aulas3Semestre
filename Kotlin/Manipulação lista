@@ -1,0 +1,39 @@
+fun cont():Int{
+    println("Quantos numeros voce deseja inserir dentro da lista: ")
+   return(readLine()!!.toInt())
+}
+fun inserir(lista:MutableList<Int>,contador:Int){
+    for (i in 0 until contador){
+        println("Digite o valor que deseja inserir na lista: ")
+        val x = readLine()!!.toInt()
+        if(x in lista){
+            lista.remove(x)
+        }else{
+            lista.add(x)
+        }
+
+
+    }
+}
+fun ordenar(lista:MutableList<Int>){
+    lista.sort()
+}
+fun somaLista(lista:MutableList<Int>){
+    var soma=0
+    for(Num in lista){
+        soma+= Num
+    }
+    println("Soma de lista: $soma \n")
+}
+fun media(lista:MutableList<Int>):Double {
+    return(lista.average())
+}
+fun main(){
+    val lista=mutableListOf<Int>()
+    val numero= cont()
+    inserir(lista,numero)
+    ordenar(lista)
+    somaLista(lista)
+    println(media(lista))
+
+}
