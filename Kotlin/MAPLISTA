@@ -1,0 +1,57 @@
+data class Produto(
+    val nome:String= " ",
+    val preco:Double = 0.0,
+    var quantidadeEstoque:Int=0){
+
+
+    fun adicionarEstoque(quantidade: Int) {
+        println("Digite a quantidade de estoque nova: ")
+        val x = readLine()!!.toInt()
+        quantidadeEstoque += x
+
+    }
+
+    fun RemoverEstoque(quantidade: Int) {
+        println("Digite a quantidade de estoque remover: ")
+        val y = readLine()!!.toInt()
+        if (quantidadeEstoque - y < 0) {
+            println("Estoque Negado.")
+        } else {
+            quantidadeEstoque -= y
+        }
+
+    }
+
+    override fun toString(): String {
+        return ("Produto (nome='$nome', preco=$preco, quantidadeEstoque=$quantidadeEstoque)")
+    }
+
+    fun exibirDetalhes() {
+        println(this.toString())
+    }
+}
+
+
+fun main(){
+    val estoque= mutableListOf<Produto>()
+    estoque.add(Produto("Camisa",50.0, 10))
+    estoque.add(Produto("Calca", 120.0, 5))
+    estoque.add(Produto("Tenis", 200.0, 2))
+
+    fun exibirEstoque(){
+        println("Estoque atual:")
+        for(produto in estoque){
+            produto.exibirDetalhes()
+        }
+    }
+    exibirEstoque()
+    println("\nAdicionando 5 unidades ao estoque da Camisa...")
+    val produtoCamisa = estoque.find { it.nome == "Camisa" }
+    produtoCamisa?.adicionarEstoque(5)  // Aumentando o estoque da Camisa
+
+    println("\nRemovendo 3 unidades do estoque da Calça...")
+    val produtoCalca = estoque.find { it.nome == "Calça" }
+    produtoCalca?.RemoverEstoque(3)  // Removendo o estoque da Calça
+
+    exibirEstoque()
+}
